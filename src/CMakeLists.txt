@@ -20,17 +20,23 @@ QT4_WRAP_UI(FilterSamesetBasic_FORMS_HEADERS ${FilterSamesetBasic_FORMS})
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_EXECUTABLE(FilterSamesetBasic ${FilterSamesetBasic_SOURCES}
-    ${FilterSamesetBasic_FORMS_HEADERS}
-    ${FilterSamesetBasic_HEADERS_MOC}
-)
+	${FilterSamesetBasic_FORMS_HEADERS}
+	${FilterSamesetBasic_HEADERS_MOC}
+	)
 
 # 添加共享库路，注意该配置必须添加在设置应用程序后，即ADD_EXECUTABLE后面
-IF(LINUX)
-    MESSAGE(STATUS "Found LINUX OS")
-    TARGET_LINK_LIBRARIES(FilterSamesetBasic ${QT_LIBRARIES})
+IF(WIN32)
+	MESSAGE(STATUS "Found WIN32 OS")
+	#TARGET_LINK_LIBRARIES(FilterSamesetBasic ${QT_LIBRARIES})
 ELSEIF(APPLE)
-    MESSAGE(STATUS "Found APPLE OS")
-    TARGET_LINK_LIBRARIES(FilterSamesetBasic ${QT_LIBRARIES})
+	MESSAGE(STATUS "Found APPLE OS")    
+	#TARGET_LINK_LIBRARIES(FilterSamesetBasic ${QT_LIBRARIES})
+ELSEIF(UNIX)
+	MESSAGE(STATUS "Found UNIX or UNIX-like OS")    
 ENDIF()
+
+# updated: 将链接方式放到系统检查外面；
+TARGET_LINK_LIBRARIES(FilterSamesetBasic ${QT_LIBRARIES})
+
 #LINK_DIRECTORIES(${QT_LIBRARIES})
 
