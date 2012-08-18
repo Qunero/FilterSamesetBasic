@@ -179,7 +179,8 @@ bool MainWidget::backupFile(const QString & origFilePath, const QString & suffix
     if(! QFile::copy(origFilePath, backupPath)){
         // TODO: 备份失败,可能需要产生提示供用户选择是否继续;或者实现其他方案;
         // 当前demo暂时不实现特殊处理方案;
-        fprintf(stderr,"failed to backup file : %s\n", origFilePath.toAscii().data());
+        std::cerr << qPrintable("failed to backup file: " + origFilePath) << std::endl;
+
         return false;
     }
     return true;

@@ -5,7 +5,6 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <iostream>
-#include <cstdio>
 
 namespace Ui {
 class MainWidget;
